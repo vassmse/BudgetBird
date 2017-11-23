@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="hu.bme.aut.budgetbird.AddCost">
+
+        <EditText
+            android:id="@+id/salary_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="textCapWords"
+            android:singleLine="true"
+            android:layout_margin="20dp"
+            android:hint="@string/salary_name"/>
+
+        <EditText
+            android:id="@+id/salary_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_margin="20dp"
+            android:inputType="numberDecimal"
+            android:hint="@string/salary_amount"/>
+
+
+        <ToggleButton
+            android:id="@+id/expense_or_income"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textOff="@string/income"
+            android:textOn="@string/expense" />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/save" />
+
+
+</LinearLayout>

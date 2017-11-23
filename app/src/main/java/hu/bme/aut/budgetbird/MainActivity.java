@@ -1,6 +1,7 @@
 package hu.bme.aut.budgetbird;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,10 +21,10 @@ import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText nameEditText;
-    private EditText amountEditText;
-    private ToggleButton typeChooserButton;
-    private Button saveButton;
+   // private EditText nameEditText;
+   // private EditText amountEditText;
+   // private ToggleButton typeChooserButton;
+   // private Button saveButton;
     private LinearLayout listOfRows;
     private LayoutInflater inflater;
 
@@ -41,15 +42,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        nameEditText = (EditText) findViewById(R.id.salary_name);
-        amountEditText = (EditText) findViewById(R.id.salary_amount);
-        typeChooserButton = (ToggleButton)findViewById(R.id.expense_or_income);
-        saveButton = (Button) findViewById(R.id.save_button);
+       // nameEditText = (EditText) findViewById(R.id.salary_name);
+       // amountEditText = (EditText) findViewById(R.id.salary_amount);
+      //  typeChooserButton = (ToggleButton)findViewById(R.id.expense_or_income);
+     //   saveButton = (Button) findViewById(R.id.save_button);
         listOfRows = (LinearLayout) findViewById(R.id.list_of_rows);
 
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        saveButton.setOnClickListener(new View.OnClickListener(){
+        /*saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 if (nameEditText.getText().toString().isEmpty() || amountEditText.getText().toString().isEmpty()){
@@ -69,14 +70,14 @@ public class MainActivity extends AppCompatActivity {
                 listOfRows.addView(rowItem);
 
             }
-        });
+        });*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(), AddCost.class);
+                startActivity(intent);
             }
         });
     }
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            Toast.makeText(MainActivity.this, "Beállítások", Toast.LENGTH_LONG).show();
+
             return true;
         }
 

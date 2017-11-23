@@ -14,7 +14,7 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
 
-    <LinearLayout
+ <!--   <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -38,9 +38,9 @@
                 android:inputType="numberDecimal"
                 android:hint="@string/salary_amount"/>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
@@ -60,7 +60,7 @@
             android:text="@string/save" />
 
 
-    </LinearLayout>
+    </LinearLayout>-->
 
     <ScrollView
         android:layout_width="match_parent"
