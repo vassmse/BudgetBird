@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BudgetBird</string>
+    <string name="action_statistics">Statisztika</string>
+    <string name="action_history">Előzmények</string>
+    <string name="action_settings">Beállítások</string>
+    <string name="expense">Kiadás</string>
+    <string name="income">Bevétel</string>
+    <string name="save">Mentés</string>
+    <string name="salary_name">Megnevezés</string>
+    <string name="salary_amount">1590</string>
+    <string name="warn_message">Töltsd ki a mezőket!</string>
+</resources>
