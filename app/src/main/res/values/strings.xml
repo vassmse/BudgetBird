@@ -9,4 +9,12 @@
     <string name="salary_name">Megnevezés</string>
     <string name="salary_amount">1590</string>
     <string name="warn_message">Töltsd ki a mezőket!</string>
+    <string name="cloth">Ruha</string>
+    <string name="food">Étel</string>
+    <string name="transport">Közlekedés</string>
+    <string name="other">Egyéb</string>
+    <string name="salary">Fizetés</string>
+    <string name="gambling">Szerencsejáték</string>
+    <string name="expenses">Kiadások</string>
+    <string name="incomes">Bevételek</string>
 </resources>

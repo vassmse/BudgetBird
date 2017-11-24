@@ -26,6 +26,13 @@
             android:inputType="numberDecimal"
             android:hint="@string/salary_amount"/>
 
+        <Spinner
+            android:id="@+id/type_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            />
+
 
         <ToggleButton
             android:id="@+id/expense_or_income"

@@ -107,7 +107,18 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-
+            Intent settingsIntent = new Intent(MainActivity.this, Settings.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        else if (id == R.id.action_history) {
+            Intent historyIntent = new Intent(MainActivity.this, History.class);
+            startActivity(historyIntent);
+            return true;
+        }
+        else if (id == R.id.action_statistics) {
+            Intent statisticsIntent = new Intent(MainActivity.this, Statistics.class);
+            startActivity(statisticsIntent);
             return true;
         }
 
