@@ -53,7 +53,7 @@ public class AddCost extends AppCompatActivity {
                     return;
                 }
 
-                businessLayer.AddCost(nameEditText.getText().toString(), Double.parseDouble(amountEditText.getText().toString()), typeChooserButton.isChecked(), typeSpinner.getSelectedItem().toString());
+                businessLayer.AddCost(nameEditText.getText().toString(), Integer.parseInt(amountEditText.getText().toString()), typeChooserButton.isChecked(), typeSpinner.getSelectedItem().toString());
                 finish();
             }
         });

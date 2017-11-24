@@ -17,7 +17,6 @@ public class DataManager {
 
     private List<Cost> costs = new ArrayList<>();
     private List<CostType> types = new ArrayList<>();
-    private Cost newCost;
 
     private DataManager() {
         setDummyTypes();
@@ -32,17 +31,10 @@ public class DataManager {
         return instance;
     }
 
-    public void AddCost(String name, double ammount, boolean isExpense, String costType)
+    public void AddCost(String name, int ammount, boolean isExpense, String costType)
     {
         Date currentTime =  Calendar.getInstance().getTime();
-        newCost = new Cost(name, ammount, currentTime, isExpense,costType );
-        costs.add(newCost);
-    }
-
-    public Cost GetAddedCost()
-    {
-        //TODO: null, if press back
-        return newCost;
+        costs.add(new Cost(name, ammount, currentTime, isExpense,costType ));
     }
 
     public List<Cost> GetCosts() {

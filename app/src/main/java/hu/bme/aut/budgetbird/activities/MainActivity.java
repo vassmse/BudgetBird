@@ -3,6 +3,7 @@ package hu.bme.aut.budgetbird.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -53,23 +54,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listOfRows = (LinearLayout) findViewById(R.id.list_of_rows);
-        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        for(int i = 0; i<businessLayer.GetCosts().size(); i++)
-        {
-            View rowItem = inflater.inflate(R.layout.salary_row, null);
-            ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
-            TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
-            TextView rowItemSalaryAmount = (TextView) rowItem.findViewById(R.id.row_salary_amount);
-
-            icon.setImageResource(businessLayer.GetCosts().get(i).isExpense() ? R.drawable.expense : R.drawable.income);
-            rowItemSalaryName.setText(businessLayer.GetCosts().get(i).getName());
-            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetCosts().get(i).getAmount()));
-
-            listOfRows.addView(rowItem);
-        }
-
 
     }
 
@@ -79,16 +63,19 @@ public class MainActivity extends AppCompatActivity {
         listOfRows = (LinearLayout) findViewById(R.id.list_of_rows);
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        if(businessLayer.GetAddedCost()!=null)
+        listOfRows.removeAllViews();
+
+        //TODO: add just the new item
+        for(int i = 0; i<businessLayer.GetCosts().size(); i++)
         {
             View rowItem = inflater.inflate(R.layout.salary_row, null);
             ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
             TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
             TextView rowItemSalaryAmount = (TextView) rowItem.findViewById(R.id.row_salary_amount);
 
-            icon.setImageResource(businessLayer.GetAddedCost().isExpense() ? R.drawable.expense : R.drawable.income);
-            rowItemSalaryName.setText(businessLayer.GetAddedCost().getName());
-            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetAddedCost().getAmount()));
+            icon.setImageResource(getImageResource(businessLayer.GetCosts().get(i).getCostType()));
+            rowItemSalaryName.setText(businessLayer.GetCosts().get(i).getName());
+            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetCosts().get(i).getAmount())+" Ft");
 
             listOfRows.addView(rowItem);
         }
@@ -123,5 +110,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private @DrawableRes int getImageResource(String costType) {
+        @DrawableRes int ret;
+        switch (costType) {
+            case "Étel":
+                ret = R.drawable.type_food;
+                break;
+            case "Utazás":
+                ret = R.drawable.type_travel;
+                break;
+            case "Fizetés":
+                ret = R.drawable.type_salary;
+                break;
+            default:
+                ret = R.drawable.type_default_green;
+        }
+        return ret;
     }
 }

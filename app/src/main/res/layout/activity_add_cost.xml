@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:layout_margin="20dp"
-            android:inputType="numberDecimal"
+            android:inputType="numberSigned"
             android:hint="@string/salary_amount"/>
 
         <Spinner

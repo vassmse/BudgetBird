@@ -10,12 +10,12 @@ import java.util.Date;
 
 public class Cost extends SugarRecord {
     private String name;
-    private double amount;
+    private int amount;
     private Date date;
     private boolean isExpense;
     private String costType;
 
-    public Cost(String name, double amount, Date date, boolean isExpense, String costType)
+    public Cost(String name, int amount, Date date, boolean isExpense, String costType)
     {
         this.name = name;
         this.amount = amount;
@@ -28,7 +28,7 @@ public class Cost extends SugarRecord {
         return name;
     }
 
-    public double getAmount()
+    public int getAmount()
     {
         return amount;
     }
