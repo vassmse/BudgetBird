@@ -66,16 +66,16 @@ public class MainActivity extends AppCompatActivity {
         listOfRows.removeAllViews();
 
         //TODO: add just the new item
-        for(int i = 0; i<businessLayer.GetCosts().size(); i++)
+        for(int i = 0; i<businessLayer.GetCostsSum().size(); i++)
         {
             View rowItem = inflater.inflate(R.layout.salary_row, null);
             ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
             TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
             TextView rowItemSalaryAmount = (TextView) rowItem.findViewById(R.id.row_salary_amount);
 
-            icon.setImageResource(getImageResource(businessLayer.GetCosts().get(i).getCostType()));
-            rowItemSalaryName.setText(businessLayer.GetCosts().get(i).getName());
-            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetCosts().get(i).getAmount())+" Ft");
+            icon.setImageResource(getImageResource(businessLayer.GetCostsSum().get(i).getCostType()));
+            rowItemSalaryName.setText(businessLayer.GetCostsSum().get(i).getName());
+            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetCostsSum().get(i).getAmount())+" Ft");
 
             listOfRows.addView(rowItem);
         }
@@ -118,14 +118,32 @@ public class MainActivity extends AppCompatActivity {
             case "Étel":
                 ret = R.drawable.type_food;
                 break;
-            case "Utazás":
-                ret = R.drawable.type_travel;
+            case "Közlekedés":
+                ret = R.drawable.type_transport;
+                break;
+            case "Vásárlás":
+                ret = R.drawable.type_shopping;
+                break;
+            case "Lakhatás":
+                ret = R.drawable.type_home;
+                break;
+            case "Szórakozás":
+                ret = R.drawable.type_entertainment;
                 break;
             case "Fizetés":
                 ret = R.drawable.type_salary;
                 break;
+            case "Ösztöndíj":
+                ret = R.drawable.type_university;
+                break;
+                case "Ajándék":
+                ret = R.drawable.type_gift;
+                break;
+            case "Szerencsejáték":
+                ret = R.drawable.type_gambling;
+                break;
             default:
-                ret = R.drawable.type_default_green;
+                ret = R.drawable.type_other_red;
         }
         return ret;
     }

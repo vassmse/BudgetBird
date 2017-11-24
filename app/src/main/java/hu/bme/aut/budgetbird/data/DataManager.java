@@ -22,8 +22,7 @@ public class DataManager extends SugarApp {
 
     private DataManager() {
         costs = Cost.listAll(Cost.class);
-        types = new ArrayList<>();
-        setDummyTypes();
+        types = getTypes();
     }
 
     public static DataManager getInstance() {
@@ -34,20 +33,20 @@ public class DataManager extends SugarApp {
         return instance;
     }
 
-    public void AddCost(String name, int ammount, boolean isExpense, String costType)
+    public void AddCost(String name, int amount, boolean isExpense, String costType)
     {
         Date currentTime =  Calendar.getInstance().getTime();
-        Cost cost = new Cost(name, ammount, currentTime, isExpense,costType );
+        Cost cost = new Cost(name, amount, currentTime, isExpense,costType );
         cost.save();
         costs.add(cost);
     }
 
-    public List<Cost> GetCosts() {
+    public List<Cost> GetCostsSum() {
         return costs;
     }
 
     //TODO: every costtype
-    public int GetCosts(String type) {
+    public int GetCostsSum(String type) {
 
         int amount = 0;
 
@@ -80,24 +79,27 @@ public class DataManager extends SugarApp {
             if(types.get(i).isExpense())
                 expenseTypes.add(types.get(i).getType());
         }
-        return  expenseTypes;
+        return expenseTypes;
     }
 
-    private void setDummyTypes()
+    private ArrayList<CostType> getTypes()
     {
-        CostType type1 = new CostType("Étel", true);
-        CostType type2 = new CostType("Utazás", true);
-        CostType type3 = new CostType("Egyéb", true);
-        CostType type4 = new CostType("Fizetés", false);
-        CostType type5 = new CostType("Ösztöndíj", false);
-        CostType type6 = new CostType("Egyéb", false);
+        ArrayList<CostType> costTypes = new ArrayList<>();
 
-        types.add(type1);
-        types.add(type2);
-        types.add(type3);
-        types.add(type4);
-        types.add(type5);
-        types.add(type6);
+        costTypes.add(new CostType("Étel", true));
+        costTypes.add(new CostType("Vásárlás", true));
+        costTypes.add(new CostType("Lakhatás", true));
+        costTypes.add(new CostType("Közlekedés", true));
+        costTypes.add(new CostType("Szórakozás", true));
+        costTypes.add(new CostType("Egyéb", true));
+
+        costTypes.add(new CostType("Fizetés", false));
+        costTypes.add(new CostType("Ösztöndíj", false));
+        costTypes.add(new CostType("Ajándék", false));
+        costTypes.add(new CostType("Szerencsejáték", false));
+        costTypes.add(new CostType("Egyéb", false));
+
+        return costTypes;
     }
 
 }

@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.bme.aut.budgetbird.R;
-import hu.bme.aut.budgetbird.model.CostType;
 import hu.bme.aut.budgetbird.data.DataManager;
 
 public class Statistics extends AppCompatActivity {
@@ -41,12 +40,12 @@ public class Statistics extends AppCompatActivity {
         List<PieEntry> expenses = new ArrayList<>();
         List<PieEntry> incomes = new ArrayList<>();
 
-        if(businessLayer.GetCosts("Étel")>0) expenses.add(new PieEntry(businessLayer.GetCosts("Étel"),getResources().getString(R.string.cloth)));
-        if(businessLayer.GetCosts("Utazás")>0) expenses.add(new PieEntry(businessLayer.GetCosts("Utazás"),getResources().getString(R.string.food)));
-        if(businessLayer.GetCosts("Egyéb")>0) expenses.add(new PieEntry(businessLayer.GetCosts("Egyéb"),getResources().getString(R.string.other)));
+        if(businessLayer.GetCostsSum("Étel")>0) expenses.add(new PieEntry(businessLayer.GetCostsSum("Étel"),getResources().getString(R.string.cloth)));
+        if(businessLayer.GetCostsSum("Utazás")>0) expenses.add(new PieEntry(businessLayer.GetCostsSum("Utazás"),getResources().getString(R.string.food)));
+        if(businessLayer.GetCostsSum("Egyéb")>0) expenses.add(new PieEntry(businessLayer.GetCostsSum("Egyéb"),getResources().getString(R.string.other)));
 
-        if(businessLayer.GetCosts("Fizetés")>0) incomes.add(new PieEntry(businessLayer.GetCosts("Fizetés"),getResources().getString(R.string.salary)));
-        if(businessLayer.GetCosts("Egyéb")>0) incomes.add(new PieEntry(businessLayer.GetCosts("Egyéb"),getResources().getString(R.string.gambling)));
+        if(businessLayer.GetCostsSum("Fizetés")>0) incomes.add(new PieEntry(businessLayer.GetCostsSum("Fizetés"),getResources().getString(R.string.salary)));
+        if(businessLayer.GetCostsSum("Egyéb")>0) incomes.add(new PieEntry(businessLayer.GetCostsSum("Egyéb"),getResources().getString(R.string.gambling)));
 
         PieDataSet dataSetExpenses = new PieDataSet(expenses,getResources().getString(R.string.expenses));
         dataSetExpenses.setColors(ColorTemplate.LIBERTY_COLORS);

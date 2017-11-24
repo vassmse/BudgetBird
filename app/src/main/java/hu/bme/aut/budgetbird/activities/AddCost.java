@@ -41,9 +41,17 @@ public class AddCost extends AppCompatActivity {
         saveButton = (Button) findViewById(R.id.save_button);
 
         typeSpinner = (Spinner) findViewById(R.id.type_spinner);
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, businessLayer.GetExpenseTypes()); //TODO: expense, income types
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        typeSpinner.setAdapter(dataAdapter);
+        if(typeChooserButton.isChecked())
+        {
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, businessLayer.GetExpenseTypes());
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            typeSpinner.setAdapter(dataAdapter);
+        }
+        else{
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, businessLayer.GetIncomeTypes());
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            typeSpinner.setAdapter(dataAdapter);
+        }
 
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,6 +64,24 @@ public class AddCost extends AppCompatActivity {
                 businessLayer.AddCost(nameEditText.getText().toString(), Integer.parseInt(amountEditText.getText().toString()), typeChooserButton.isChecked(), typeSpinner.getSelectedItem().toString());
                 finish();
             }
+        });
+
+        typeChooserButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if(typeChooserButton.isChecked())
+                {
+                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(AddCost.this, android.R.layout.simple_spinner_item, businessLayer.GetExpenseTypes());
+                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    typeSpinner.setAdapter(dataAdapter);
+                }
+                else{
+                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(AddCost.this, android.R.layout.simple_spinner_item, businessLayer.GetIncomeTypes());
+                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    typeSpinner.setAdapter(dataAdapter);
+                }
+            }
+
         });
     }
 
