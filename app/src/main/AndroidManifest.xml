@@ -23,6 +23,11 @@
         <activity android:name=".activities.Statistics" />
         <activity android:name=".activities.History" />
         <activity android:name=".activities.Settings"></activity>
+
+        <meta-data android:name="DATABASE" android:value="budget-bird.db" />
+        <meta-data android:name="VERSION" android:value="2" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="hu.bme.aut.budgetbird" />
     </application>
 
 </manifest>

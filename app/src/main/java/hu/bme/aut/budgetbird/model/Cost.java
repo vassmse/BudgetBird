@@ -1,4 +1,6 @@
-package hu.bme.aut.budgetbird.data;
+package hu.bme.aut.budgetbird.model;
+
+import com.orm.SugarRecord;
 
 import java.util.Date;
 
@@ -6,7 +8,7 @@ import java.util.Date;
  * Created by vassm on 2017. 11. 24..
  */
 
-public class Cost {
+public class Cost extends SugarRecord {
     private String name;
     private double ammount;
     private Date date;
@@ -45,4 +47,6 @@ public class Cost {
     {
         return  costType;
     }
+
+
 }

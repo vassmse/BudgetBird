@@ -4,18 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import hu.bme.aut.budgetbird.R;
-import hu.bme.aut.budgetbird.data.CostType;
+import hu.bme.aut.budgetbird.model.CostType;
 import hu.bme.aut.budgetbird.data.DataManager;
 
 public class Statistics extends AppCompatActivity {
@@ -56,15 +54,16 @@ public class Statistics extends AppCompatActivity {
         dataSetExpenses.setColors(ColorTemplate.LIBERTY_COLORS);
 
         PieDataSet dataSetIncomes = new PieDataSet(incomes,getResources().getString(R.string.incomes));
-        dataSetIncomes.setColors(ColorTemplate.VORDIPLOM_COLORS);
+        dataSetIncomes.setColors(ColorTemplate.LIBERTY_COLORS);
 
         PieData dataExpenses = new PieData(dataSetExpenses);
         chartExpenses.setData(dataExpenses);
-        chartExpenses.setDescription(new Description());
+        chartExpenses.getDescription().setEnabled(false);
         chartExpenses.invalidate();
 
         PieData dataIncomes = new PieData(dataSetIncomes);
         chartIncomes.setData(dataIncomes);
+        chartIncomes.getDescription().setEnabled(false);
         chartIncomes.invalidate();
     }
 }

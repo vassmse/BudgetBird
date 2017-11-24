@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import hu.bme.aut.budgetbird.model.Cost;
+import hu.bme.aut.budgetbird.model.CostType;
+
 /**
  * Created by vassm on 2017. 11. 24..
  */

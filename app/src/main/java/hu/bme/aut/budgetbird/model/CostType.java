@@ -1,4 +1,4 @@
-package hu.bme.aut.budgetbird.data;
+package hu.bme.aut.budgetbird.model;
 
 /**
  * Created by vassm on 2017. 11. 24..
