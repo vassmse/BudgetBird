@@ -1,7 +1,8 @@
 package hu.bme.aut.budgetbird.data;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -11,7 +12,8 @@ import java.util.List;
 public class DataManager {
     private static DataManager instance;
 
-    private List<Cost> costs = new ArrayList<Cost>();
+    private List<Cost> costs = new ArrayList<>();
+    private Cost newCost;
 
     private DataManager() {
         Date date = new Date(2017,11,24);
@@ -27,7 +29,19 @@ public class DataManager {
         return instance;
     }
 
-    public List<Cost> getCosts() {
+    public void AddCost(String name, double ammount, boolean isExpense, CostType costType)
+    {
+        Date currentTime =  Calendar.getInstance().getTime();
+        newCost = new Cost(name, ammount, currentTime, isExpense,costType );
+        costs.add(newCost);
+    }
+
+    public Cost GetAddedCost()
+    {
+        return newCost;
+    }
+
+    public List<Cost> GetCosts() {
         return costs;
     }
 }

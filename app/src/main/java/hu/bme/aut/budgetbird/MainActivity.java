@@ -4,20 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import hu.bme.aut.budgetbird.data.DataManager;
 
@@ -57,54 +52,45 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         listOfRows = (LinearLayout) findViewById(R.id.list_of_rows);
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        for(int i = 0; i<businessLayer.getCosts().size();i++)
+        for(int i = 0; i<businessLayer.GetCosts().size(); i++)
         {
             View rowItem = inflater.inflate(R.layout.salary_row, null);
             ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
             TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
             TextView rowItemSalaryAmount = (TextView) rowItem.findViewById(R.id.row_salary_amount);
 
-            icon.setImageResource(businessLayer.getCosts().get(i).isExpense() ? R.drawable.expense : R.drawable.income);
-            rowItemSalaryName.setText(businessLayer.getCosts().get(i).getName());
-            rowItemSalaryAmount.setText(String.valueOf(businessLayer.getCosts().get(i).getAmmount()));
+            icon.setImageResource(businessLayer.GetCosts().get(i).isExpense() ? R.drawable.expense : R.drawable.income);
+            rowItemSalaryName.setText(businessLayer.GetCosts().get(i).getName());
+            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetCosts().get(i).getAmmount()));
 
             listOfRows.addView(rowItem);
         }
 
 
+    }
 
-       // nameEditText = (EditText) findViewById(R.id.salary_name);
-       // amountEditText = (EditText) findViewById(R.id.salary_amount);
-      //  typeChooserButton = (ToggleButton)findViewById(R.id.expense_or_income);
-     //   saveButton = (Button) findViewById(R.id.save_button);
+    protected void onStart() {
+        super.onStart();
 
+        listOfRows = (LinearLayout) findViewById(R.id.list_of_rows);
+        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        /*saveButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                if (nameEditText.getText().toString().isEmpty() || amountEditText.getText().toString().isEmpty()){
-                    Snackbar.make(view,R.string.warn_message,Snackbar.LENGTH_LONG).show();
-                    return;
-                }
+        if(businessLayer.GetAddedCost()!=null)
+        {
+            View rowItem = inflater.inflate(R.layout.salary_row, null);
+            ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
+            TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
+            TextView rowItemSalaryAmount = (TextView) rowItem.findViewById(R.id.row_salary_amount);
 
-                View rowItem = inflater.inflate(R.layout.salary_row, null);
-                ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
-                TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
-                TextView rowItemSalaryAmount = (TextView) rowItem.findViewById(R.id.row_salary_amount);
+            icon.setImageResource(businessLayer.GetAddedCost().isExpense() ? R.drawable.expense : R.drawable.income);
+            rowItemSalaryName.setText(businessLayer.GetAddedCost().getName());
+            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetAddedCost().getAmmount()));
 
-                icon.setImageResource(typeChooserButton.isChecked() ? R.drawable.expense : R.drawable.income);
-                rowItemSalaryName.setText(nameEditText.getText().toString());
-                rowItemSalaryAmount.setText(amountEditText.getText().toString());
-
-                listOfRows.addView(rowItem);
-
-            }
-        });*/
-
+            listOfRows.addView(rowItem);
+        }
 
     }
 
