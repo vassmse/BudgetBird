@@ -17,4 +17,9 @@
     <string name="gambling">Szerencsejáték</string>
     <string name="expenses">Kiadások</string>
     <string name="incomes">Bevételek</string>
+    <string name="shopping">Vásárlás</string>
+    <string name="home">Lakhatás</string>
+    <string name="fun">Szórakozás</string>
+    <string name="scholarship">Ösztöndíj</string>
+    <string name="gift">Ajándék</string>
 </resources>

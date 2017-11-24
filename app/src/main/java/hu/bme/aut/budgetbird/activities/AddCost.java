@@ -68,6 +68,7 @@ public class AddCost extends AppCompatActivity {
 
         typeChooserButton.setOnClickListener(new View.OnClickListener(){
             @Override
+            //todo: redundant..
             public void onClick(View view) {
                 if(typeChooserButton.isChecked())
                 {

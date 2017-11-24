@@ -51,7 +51,7 @@ public class DataManager extends SugarApp {
         int amount = 0;
 
         for (int i = 0; i < costs.size(); i++) {
-            if (costs.get(i).getCostType() == type)
+            if (costs.get(i).getCostType().equals(type))
                 amount += costs.get(i).getAmount();
         }
 

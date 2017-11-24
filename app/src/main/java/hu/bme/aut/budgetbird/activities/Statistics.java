@@ -42,10 +42,17 @@ public class Statistics extends AppCompatActivity {
 
         if(businessLayer.GetCostsSum("Étel")>0) expenses.add(new PieEntry(businessLayer.GetCostsSum("Étel"),getResources().getString(R.string.cloth)));
         if(businessLayer.GetCostsSum("Utazás")>0) expenses.add(new PieEntry(businessLayer.GetCostsSum("Utazás"),getResources().getString(R.string.food)));
+        if(businessLayer.GetCostsSum("Vásárlás")>0) expenses.add(new PieEntry(businessLayer.GetCostsSum("Vásárlás"),getResources().getString(R.string.shopping)));
+        if(businessLayer.GetCostsSum("Lakhatás")>0) expenses.add(new PieEntry(businessLayer.GetCostsSum("Lakhatás"),getResources().getString(R.string.home)));
+        if(businessLayer.GetCostsSum("Közlekedés")>0) expenses.add(new PieEntry(businessLayer.GetCostsSum("Közlekedés"),getResources().getString(R.string.transport)));
+        if(businessLayer.GetCostsSum("Szórakozás")>0) expenses.add(new PieEntry(businessLayer.GetCostsSum("Szórakozás"),getResources().getString(R.string.fun)));
         if(businessLayer.GetCostsSum("Egyéb")>0) expenses.add(new PieEntry(businessLayer.GetCostsSum("Egyéb"),getResources().getString(R.string.other)));
 
         if(businessLayer.GetCostsSum("Fizetés")>0) incomes.add(new PieEntry(businessLayer.GetCostsSum("Fizetés"),getResources().getString(R.string.salary)));
-        if(businessLayer.GetCostsSum("Egyéb")>0) incomes.add(new PieEntry(businessLayer.GetCostsSum("Egyéb"),getResources().getString(R.string.gambling)));
+        if(businessLayer.GetCostsSum("Ösztöndíj")>0) incomes.add(new PieEntry(businessLayer.GetCostsSum("Ösztöndíj"),getResources().getString(R.string.scholarship)));
+        if(businessLayer.GetCostsSum("Ajándék")>0) incomes.add(new PieEntry(businessLayer.GetCostsSum("Ajándék"),getResources().getString(R.string.gift)));
+        if(businessLayer.GetCostsSum("Szerencsejáték")>0) incomes.add(new PieEntry(businessLayer.GetCostsSum("Szerencsejáték"),getResources().getString(R.string.gambling)));
+        if(businessLayer.GetCostsSum("Egyéb")>0) incomes.add(new PieEntry(businessLayer.GetCostsSum("Egyéb"),getResources().getString(R.string.other)));
 
         PieDataSet dataSetExpenses = new PieDataSet(expenses,getResources().getString(R.string.expenses));
         dataSetExpenses.setColors(ColorTemplate.LIBERTY_COLORS);
