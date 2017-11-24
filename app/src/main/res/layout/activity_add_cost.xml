@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="hu.bme.aut.budgetbird.AddCost">
+    tools:context="hu.bme.aut.budgetbird.activities.AddCost">
 
         <EditText
             android:id="@+id/salary_name"

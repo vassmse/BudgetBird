@@ -1,4 +1,4 @@
-package hu.bme.aut.budgetbird;
+package hu.bme.aut.budgetbird.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import hu.bme.aut.budgetbird.R;
 import hu.bme.aut.budgetbird.data.DataManager;
 
 public class MainActivity extends AppCompatActivity {

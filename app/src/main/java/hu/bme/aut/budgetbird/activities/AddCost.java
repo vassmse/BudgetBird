@@ -1,4 +1,4 @@
-package hu.bme.aut.budgetbird;
+package hu.bme.aut.budgetbird.activities;
 
 import android.content.Context;
 import android.provider.ContactsContract;
@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import hu.bme.aut.budgetbird.R;
 import hu.bme.aut.budgetbird.data.CostType;
 import hu.bme.aut.budgetbird.data.DataManager;
 
