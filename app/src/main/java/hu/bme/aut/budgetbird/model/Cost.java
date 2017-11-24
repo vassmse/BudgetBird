@@ -24,6 +24,8 @@ public class Cost extends SugarRecord {
         this.costType = costType;
     }
 
+    public Cost(){}
+
     public String getName(){
         return name;
     }
