@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
             icon.setImageResource(businessLayer.GetCosts().get(i).isExpense() ? R.drawable.expense : R.drawable.income);
             rowItemSalaryName.setText(businessLayer.GetCosts().get(i).getName());
-            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetCosts().get(i).getAmmount()));
+            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetCosts().get(i).getAmount()));
 
             listOfRows.addView(rowItem);
         }
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
             icon.setImageResource(businessLayer.GetAddedCost().isExpense() ? R.drawable.expense : R.drawable.income);
             rowItemSalaryName.setText(businessLayer.GetAddedCost().getName());
-            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetAddedCost().getAmmount()));
+            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetAddedCost().getAmount()));
 
             listOfRows.addView(rowItem);
         }

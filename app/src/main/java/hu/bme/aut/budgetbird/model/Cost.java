@@ -10,15 +10,15 @@ import java.util.Date;
 
 public class Cost extends SugarRecord {
     private String name;
-    private double ammount;
+    private double amount;
     private Date date;
     private boolean isExpense;
-    private CostType costType;
+    private String costType;
 
-    public Cost(String name, double ammount, Date date, boolean isExpense, CostType costType)
+    public Cost(String name, double amount, Date date, boolean isExpense, String costType)
     {
         this.name = name;
-        this.ammount = ammount;
+        this.amount = amount;
         this.date = date;
         this.isExpense = isExpense;
         this.costType = costType;
@@ -28,9 +28,9 @@ public class Cost extends SugarRecord {
         return name;
     }
 
-    public double getAmmount()
+    public double getAmount()
     {
-        return ammount;
+        return amount;
     }
 
     public Date getDate()
@@ -43,9 +43,9 @@ public class Cost extends SugarRecord {
         return isExpense;
     }
 
-    public CostType getCostType()
+    public String getCostType()
     {
-        return  costType;
+        return costType;
     }
 
 

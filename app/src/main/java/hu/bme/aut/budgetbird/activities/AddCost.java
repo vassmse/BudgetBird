@@ -41,7 +41,7 @@ public class AddCost extends AppCompatActivity {
         saveButton = (Button) findViewById(R.id.save_button);
 
         typeSpinner = (Spinner) findViewById(R.id.type_spinner);
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, getTypes());
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, businessLayer.GetExpenseTypes()); //TODO: expense, income types
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(dataAdapter);
 
@@ -53,21 +53,10 @@ public class AddCost extends AppCompatActivity {
                     return;
                 }
 
-                businessLayer.AddCost(nameEditText.getText().toString(), Double.parseDouble(amountEditText.getText().toString()), typeChooserButton.isChecked(), CostType.valueOf(typeSpinner.getSelectedItem().toString()));
+                businessLayer.AddCost(nameEditText.getText().toString(), Double.parseDouble(amountEditText.getText().toString()), typeChooserButton.isChecked(), typeSpinner.getSelectedItem().toString());
                 finish();
             }
         });
     }
 
-    private List<String> getTypes()
-    {
-        List<String> types = new ArrayList<>();
-
-        for(int i=0;i<CostType.values().length;i++)
-        {
-            types.add(CostType.values()[i].toString());
-        }
-
-        return types;
-    }
 }
