@@ -19,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import hu.bme.aut.budgetbird.data.DataManager;
+
 public class MainActivity extends AppCompatActivity {
 
    // private EditText nameEditText;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
    // private Button saveButton;
     private LinearLayout listOfRows;
     private LayoutInflater inflater;
+
+    private DataManager businessLayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +46,42 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        businessLayer = DataManager.getInstance();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addCostIntent = new Intent(MainActivity.this, AddCost.class);
+                startActivity(addCostIntent);
+            }
+        });
+
+
+        listOfRows = (LinearLayout) findViewById(R.id.list_of_rows);
+        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        for(int i = 0; i<businessLayer.getCosts().size();i++)
+        {
+            View rowItem = inflater.inflate(R.layout.salary_row, null);
+            ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
+            TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
+            TextView rowItemSalaryAmount = (TextView) rowItem.findViewById(R.id.row_salary_amount);
+
+            icon.setImageResource(businessLayer.getCosts().get(i).isExpense() ? R.drawable.expense : R.drawable.income);
+            rowItemSalaryName.setText(businessLayer.getCosts().get(i).getName());
+            rowItemSalaryAmount.setText(String.valueOf(businessLayer.getCosts().get(i).getAmmount()));
+
+            listOfRows.addView(rowItem);
+        }
+
+
+
        // nameEditText = (EditText) findViewById(R.id.salary_name);
        // amountEditText = (EditText) findViewById(R.id.salary_amount);
       //  typeChooserButton = (ToggleButton)findViewById(R.id.expense_or_income);
      //   saveButton = (Button) findViewById(R.id.save_button);
-        listOfRows = (LinearLayout) findViewById(R.id.list_of_rows);
 
-        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         /*saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -72,14 +105,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddCost.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     @Override
