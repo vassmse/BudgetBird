@@ -29,7 +29,8 @@ public class Settings extends AppCompatActivity {
 
         businessLayer = DataManager.getInstance();
 
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        //SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences("SharedPreference", Context.MODE_PRIVATE);
         boolean isActive = sharedPref.getBoolean(getString(R.string.saved_isNotification_active), true);
         String notificationValue = sharedPref.getString(getString(R.string.saved_isNotification_value), "0");
 
@@ -43,7 +44,7 @@ public class Settings extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedPref = Settings.this.getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences sharedPref = getSharedPreferences("SharedPreference", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean(getString(R.string.saved_isNotification_active), switchValue.isChecked());
                 editor.putString(getString(R.string.saved_isNotification_value), textValue.getText().toString());

@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
         businessLayer = DataManager.getInstance();
 
+        SharedPreferences sharedPref = getSharedPreferences("SharedPreference", Context.MODE_PRIVATE);
+        boolean isActive = sharedPref.getBoolean(getString(R.string.saved_isNotification_active), true);
+        String notificationValue = sharedPref.getString(getString(R.string.saved_isNotification_value), "0");
+        businessLayer.setCostLimit(Integer.parseInt(notificationValue));
+        businessLayer.setCostLimitActive(isActive);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
