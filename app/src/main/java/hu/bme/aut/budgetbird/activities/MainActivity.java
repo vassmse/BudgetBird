@@ -26,10 +26,6 @@ import hu.bme.aut.budgetbird.data.DataManager;
 
 public class MainActivity extends AppCompatActivity {
 
-   // private EditText nameEditText;
-   // private EditText amountEditText;
-   // private ToggleButton typeChooserButton;
-   // private Button saveButton;
     private LinearLayout listOfRows;
     private LayoutInflater inflater;
 
