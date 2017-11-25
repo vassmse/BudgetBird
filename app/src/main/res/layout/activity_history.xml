@@ -7,6 +7,20 @@
     tools:context="hu.bme.aut.budgetbird.activities.History"
     android:orientation="vertical">
 
+<DatePicker
+    android:id="@+id/hisorty_datepicker"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:datePickerMode="spinner"
+    android:spinnersShown="true"
+    android:calendarViewShown="false"
+    />
 
+    <Button
+        android:id="@+id/show_history_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/show" />
 
 </LinearLayout>
