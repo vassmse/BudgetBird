@@ -1,11 +1,15 @@
 package hu.bme.aut.budgetbird.activities;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.DrawableRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -47,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         businessLayer = DataManager.getInstance();
 
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +86,10 @@ public class MainActivity extends AppCompatActivity {
             listOfRows.addView(rowItem);
         }
 
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

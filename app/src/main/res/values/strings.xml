@@ -7,7 +7,7 @@
     <string name="income">Bevétel</string>
     <string name="save">Mentés</string>
     <string name="salary_name">Megnevezés</string>
-    <string name="salary_amount">1590</string>
+    <string name="salary_amount">0</string>
     <string name="warn_message">Töltsd ki a mezőket!</string>
     <string name="cloth">Ruha</string>
     <string name="food">Étel</string>
@@ -22,4 +22,18 @@
     <string name="fun">Szórakozás</string>
     <string name="scholarship">Ösztöndíj</string>
     <string name="gift">Ajándék</string>
+    <string name="add_cost_label">Tétel hozzáadása</string>
+    <string name="statistics_label">Statisztika</string>
+    <string name="history_label">Előzmények</string>
+    <string name="settings_label">Beállítások</string>
+    <string name="main_menu_label">Kezdőlap</string>
+    <string name="notification_label">ÉRTESÍTÉS BEÁLLÍTÁSA</string>
+    <string name="notification_switch_label">Értesítés</string>
+    <string name="notification_value_label">Érték</string>
+    <string name="off">KI</string>
+    <string name="on">BE</string>
+    <string name="saved_isNotification_active">saved_isNotification_active</string>
+    <string name="saved_isNotification_value">saved_isNotification_value</string>
+    <string name="notification_title">Átlépted a limited</string>
+    <string name="notification_text">Átlépted a havi költség limited %1$d forinttal!</string>
 </resources>

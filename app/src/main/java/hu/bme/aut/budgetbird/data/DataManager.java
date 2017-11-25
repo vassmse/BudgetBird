@@ -1,5 +1,13 @@
 package hu.bme.aut.budgetbird.data;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
+
 import com.orm.SugarApp;
 
 import java.util.Date;
@@ -7,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import hu.bme.aut.budgetbird.R;
+import hu.bme.aut.budgetbird.activities.MainActivity;
+import hu.bme.aut.budgetbird.activities.Settings;
 import hu.bme.aut.budgetbird.model.Cost;
 import hu.bme.aut.budgetbird.model.CostType;
 
@@ -20,9 +31,16 @@ public class DataManager extends SugarApp {
     private final List<Cost> costs;
     private List<CostType> types;
 
+    private int totalCost;
+
+    private int costLimit;
+    private boolean isCostLimitActive;
+
+
     private DataManager() {
         costs = Cost.listAll(Cost.class);
         types = getTypes();
+        totalCost = getTotalExpenses();
     }
 
     public static DataManager getInstance() {
@@ -39,6 +57,8 @@ public class DataManager extends SugarApp {
         Cost cost = new Cost(name, amount, currentTime, isExpense,costType );
         cost.save();
         costs.add(cost);
+        if(isExpense)
+            totalCost+=amount;
     }
 
     public List<Cost> GetCostsSum() {
@@ -80,6 +100,39 @@ public class DataManager extends SugarApp {
                 expenseTypes.add(types.get(i).getType());
         }
         return expenseTypes;
+    }
+
+    public int IsCostLimitEnded()
+    {
+        if(isCostLimitActive && (costLimit<totalCost))
+        {
+            return totalCost-costLimit;
+        }
+
+        return 0;
+    }
+
+    public void setCostLimit(int limit)
+    {
+        costLimit = limit;
+    }
+
+    public void setCostLimitActive(boolean isActive)
+    {
+        isCostLimitActive = isActive;
+    }
+
+
+    private int getTotalExpenses()
+    {
+        int amount = 0;
+
+        for (int i = 0; i < costs.size(); i++) {
+            if(costs.get(i).isExpense())
+                amount += costs.get(i).getAmount();
+        }
+
+        return amount;
     }
 
     private ArrayList<CostType> getTypes()

@@ -4,15 +4,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/peacock"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/peacock_circle"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="com.orm.SugarApp">
         <activity
             android:name=".activities.MainActivity"
-            android:label="@string/app_name"
+            android:label="@string/main_menu_label"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,10 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.AddCost" />
-        <activity android:name=".activities.Statistics" />
-        <activity android:name=".activities.History" />
-        <activity android:name=".activities.Settings"></activity>
+        <activity android:name=".activities.AddCost" android:label="@string/add_cost_label" />
+        <activity android:name=".activities.Statistics" android:label="@string/statistics_label" />
+        <activity android:name=".activities.History" android:label="@string/history_label" />
+        <activity android:name=".activities.Settings" android:label="@string/settings_label" ></activity>
 
         <meta-data android:name="DATABASE" android:value="budget-bird.db" />
         <meta-data android:name="VERSION" android:value="2" />

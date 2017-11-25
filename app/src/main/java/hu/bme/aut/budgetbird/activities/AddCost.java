@@ -1,6 +1,9 @@
 package hu.bme.aut.budgetbird.activities;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -62,6 +65,9 @@ public class AddCost extends AppCompatActivity {
                 }
 
                 businessLayer.AddCost(nameEditText.getText().toString(), Integer.parseInt(amountEditText.getText().toString()), typeChooserButton.isChecked(), typeSpinner.getSelectedItem().toString());
+
+                if(businessLayer.IsCostLimitEnded()>0)
+                    sendNotification(businessLayer.IsCostLimitEnded());
                 finish();
             }
         });
@@ -84,6 +90,22 @@ public class AddCost extends AppCompatActivity {
             }
 
         });
+    }
+
+    private void sendNotification(int amount) {
+
+
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.peacock)
+                        .setVibrate(new long[] { 0, 500, 100, 500})
+                        .setContentTitle(getString(R.string.notification_title))
+                        .setContentText(getString(R.string.notification_text,amount));
+
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+        mNotificationManager.notify(001, mBuilder.build());
     }
 
 }
