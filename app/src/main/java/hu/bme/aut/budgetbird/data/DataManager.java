@@ -13,6 +13,7 @@ import com.orm.SugarApp;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import hu.bme.aut.budgetbird.R;
@@ -63,6 +64,25 @@ public class DataManager extends SugarApp {
 
     public List<Cost> GetCostsSum() {
         return costs;
+    }
+
+    public List<Cost> GetCostsSum(int year, int month) {
+       List<Cost> historyCost = new ArrayList<>();
+       Date selectedDate = new GregorianCalendar(year,month+1, 0).getTime();
+
+       for(int i=0;i<costs.size();i++)
+       {
+           Calendar cal1 = Calendar.getInstance();
+           cal1.setTime(costs.get(i).getDate());
+
+           Calendar cal2 = Calendar.getInstance();
+           cal2.setTime(selectedDate);
+
+           if(cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH))
+               historyCost.add(costs.get(i));
+       }
+
+       return historyCost;
     }
 
     //TODO: every costtype

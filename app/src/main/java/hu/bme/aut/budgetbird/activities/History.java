@@ -27,6 +27,8 @@ public class History extends AppCompatActivity {
 
     private DataManager businessLayer;
 
+    private int year, month;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,8 @@ public class History extends AppCompatActivity {
         datePicker = (DatePicker) findViewById(R.id.hisorty_datepicker);
         showButton = (Button) findViewById(R.id.show_history_button);
 
+
+
         showButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,17 +49,20 @@ public class History extends AppCompatActivity {
 
                 listOfRows.removeAllViews();
 
+                year = datePicker.getYear();
+                month = datePicker.getMonth();
+
                 //TODO: add just the new item
-                for(int i = 0; i<businessLayer.GetCostsSum().size(); i++)
+                for(int i = 0; i<businessLayer.GetCostsSum(year, month).size(); i++)
                 {
                     View rowItem = inflater.inflate(R.layout.history_row, null);
                     ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
                     TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
                     TextView rowItemSalaryAmount = (TextView) rowItem.findViewById(R.id.row_salary_amount);
 
-                    icon.setImageResource(getImageResource(businessLayer.GetCostsSum().get(i).getCostType()));
-                    rowItemSalaryName.setText(businessLayer.GetCostsSum().get(i).getName());
-                    rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetCostsSum().get(i).getAmount())+" Ft");
+                    icon.setImageResource(getImageResource(businessLayer.GetCostsSum(year, month).get(i).getCostType()));
+                    rowItemSalaryName.setText(businessLayer.GetCostsSum(year, month).get(i).getName());
+                    rowItemSalaryAmount.setText(String.format("%s Ft", String.valueOf(businessLayer.GetCostsSum(year, month).get(i).getAmount())));
 
                     listOfRows.addView(rowItem);
                 }
