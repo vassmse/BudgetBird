@@ -26,7 +26,7 @@
     <string name="statistics_label">Statisztika</string>
     <string name="history_label">Előzmények</string>
     <string name="settings_label">Beállítások</string>
-    <string name="main_menu_label">Kezdőlap</string>
+    <string name="main_menu_label">BudgetBird</string>
     <string name="notification_label">ÉRTESÍTÉS BEÁLLÍTÁSA</string>
     <string name="notification_switch_label">Értesítés</string>
     <string name="notification_value_label">Érték</string>

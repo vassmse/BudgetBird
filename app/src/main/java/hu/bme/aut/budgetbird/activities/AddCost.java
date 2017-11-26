@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
 
@@ -27,9 +29,9 @@ public class AddCost extends AppCompatActivity {
      private ToggleButton typeChooserButton;
      private Button saveButton;
      private Spinner typeSpinner;
-
      private DataManager businessLayer;
-
+     private RadioGroup radioGroup;
+     private RadioButton radioExpense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +42,13 @@ public class AddCost extends AppCompatActivity {
 
         nameEditText = (EditText) findViewById(R.id.salary_name);
         amountEditText = (EditText) findViewById(R.id.salary_amount);
-        typeChooserButton = (ToggleButton)findViewById(R.id.expense_or_income);
         saveButton = (Button) findViewById(R.id.save_button);
+        radioGroup= (RadioGroup) findViewById(R.id.radioCostType);
+        radioExpense = (RadioButton) findViewById(R.id.radioExpense);
 
         typeSpinner = (Spinner) findViewById(R.id.type_spinner);
-        if(typeChooserButton.isChecked())
+
+        if(radioExpense.isChecked())
         {
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, businessLayer.GetExpenseTypes());
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -72,11 +76,11 @@ public class AddCost extends AppCompatActivity {
             }
         });
 
-        typeChooserButton.setOnClickListener(new View.OnClickListener(){
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
             @Override
             //todo: redundant..
-            public void onClick(View view) {
-                if(typeChooserButton.isChecked())
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(radioExpense.isChecked())
                 {
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(AddCost.this, android.R.layout.simple_spinner_item, businessLayer.GetExpenseTypes());
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -93,8 +97,6 @@ public class AddCost extends AppCompatActivity {
     }
 
     private void sendNotification(int amount) {
-
-
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.peacock)

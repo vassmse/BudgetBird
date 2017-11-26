@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.DrawableRes;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -65,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
         businessLayer.setCostLimit(Integer.parseInt(notificationValue));
         businessLayer.setCostLimitActive(isActive);
 
-
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,16 +92,28 @@ public class MainActivity extends AppCompatActivity {
         //TODO: add just the new item
         for(int i = 0; i<businessLayer.GetCostsSum(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)).size(); i++)
         {
-            View rowItem = inflater.inflate(R.layout.salary_row, null);
+
+            final View rowItem = inflater.inflate(R.layout.salary_row, null);
             ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
             TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
             TextView rowItemSalaryAmount = (TextView) rowItem.findViewById(R.id.row_salary_amount);
+            ImageButton deleteButton = (ImageButton) rowItem.findViewById(R.id.cost_remove);
 
             icon.setImageResource(getImageResource(businessLayer.GetCostsSum(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)).get(i).getCostType()));
             rowItemSalaryName.setText(businessLayer.GetCostsSum(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)).get(i).getName());
             rowItemSalaryAmount.setText(String.format("%s Ft", String.valueOf(businessLayer.GetCostsSum().get(i).getAmount())));
 
             listOfRows.addView(rowItem);
+
+            final int removableIdx = i;
+
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    businessLayer.RemoveItem(removableIdx);
+                    listOfRows.removeViewAt(removableIdx);
+                }
+            });
         }
 
 

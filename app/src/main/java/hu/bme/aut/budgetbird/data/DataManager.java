@@ -142,6 +142,12 @@ public class DataManager extends SugarApp {
         isCostLimitActive = isActive;
     }
 
+    public void RemoveItem(int i)
+    {
+        Cost removable = costs.get(i);
+        removable.delete();
+        costs.remove(i);
+    }
 
     private int getTotalExpenses()
     {

@@ -7,47 +7,81 @@
     android:orientation="vertical"
     tools:context="hu.bme.aut.budgetbird.activities.AddCost">
 
-        <EditText
-            android:id="@+id/salary_name"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textCapWords"
-            android:singleLine="true"
-            android:layout_margin="20dp"
-            android:hint="@string/salary_name"/>
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/salary_amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:layout_margin="20dp"
-            android:inputType="numberSigned"
-            android:hint="@string/salary_amount"/>
-
-        <Spinner
-            android:id="@+id/type_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
 
-        <ToggleButton
-            android:id="@+id/expense_or_income"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textOff="@string/income"
-            android:textOn="@string/expense" />
 
-        <Button
-            android:id="@+id/save_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/save" />
 
+                <EditText
+                    android:id="@+id/salary_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    android:singleLine="true"
+                    android:layout_margin="20dp"
+                    android:hint="@string/salary_name"/>
+
+                <EditText
+                    android:id="@+id/salary_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:layout_margin="20dp"
+                    android:maxLength="9"
+                    android:inputType="number"
+                    android:hint="@string/salary_amount"/>
+
+
+                <RadioGroup
+                    android:id="@+id/radioCostType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_margin="20pt">
+
+                        <RadioButton
+                            android:id="@+id/radioExpense"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/expense"
+                            android:layout_marginRight="20dp"
+                            android:checked="true" />
+
+                        <RadioButton
+                            android:id="@+id/radioIncome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/income" />
+
+                </RadioGroup>
+
+                <Spinner
+                    android:id="@+id/type_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_margin="20dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    />
+
+                <Button
+                    android:id="@+id/save_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/save" />
+                </LinearLayout>
+        </ScrollView>
 
 </LinearLayout>

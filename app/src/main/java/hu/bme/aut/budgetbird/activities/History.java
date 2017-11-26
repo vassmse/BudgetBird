@@ -39,8 +39,6 @@ public class History extends AppCompatActivity {
         datePicker = (DatePicker) findViewById(R.id.hisorty_datepicker);
         showButton = (Button) findViewById(R.id.show_history_button);
 
-
-
         showButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

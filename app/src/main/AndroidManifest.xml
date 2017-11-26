@@ -16,14 +16,13 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".activities.AddCost" android:label="@string/add_cost_label" />
         <activity android:name=".activities.Statistics" android:label="@string/statistics_label" />
         <activity android:name=".activities.History" android:label="@string/history_label" />
-        <activity android:name=".activities.Settings" android:label="@string/settings_label" ></activity>
+        <activity android:name=".activities.Settings" android:label="@string/settings_label" />
 
         <meta-data android:name="DATABASE" android:value="budget-bird.db" />
         <meta-data android:name="VERSION" android:value="2" />
