@@ -1,87 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="hu.bme.aut.budgetbird.activities.AddCost">
 
-        <ScrollView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
+            <EditText
+                android:id="@+id/salary_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:hint="@string/salary_name"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/salary_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:hint="@string/salary_amount"
+                android:inputType="number"
+                android:maxLength="9"
+                android:singleLine="true" />
 
 
-                <EditText
-                    android:id="@+id/salary_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords"
-                    android:singleLine="true"
-                    android:layout_margin="20dp"
-                    android:hint="@string/salary_name"/>
+            <RadioGroup
+                android:id="@+id/radioCostType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="20pt"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/salary_amount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:layout_margin="20dp"
-                    android:maxLength="9"
-                    android:inputType="number"
-                    android:hint="@string/salary_amount"/>
-
-
-                <RadioGroup
-                    android:id="@+id/radioCostType"
+                <RadioButton
+                    android:id="@+id/radioExpense"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center_horizontal"
-                    android:layout_margin="20pt">
-
-                        <RadioButton
-                            android:id="@+id/radioExpense"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/expense"
-                            android:layout_marginRight="20dp"
-                            android:checked="true" />
-
-                        <RadioButton
-                            android:id="@+id/radioIncome"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/income" />
-
-                </RadioGroup>
-
-                <Spinner
-                    android:id="@+id/type_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_margin="20dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    />
-
-                <Button
-                    android:id="@+id/save_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="40dp"
-                    android:text="@string/save" />
-                </LinearLayout>
-        </ScrollView>
+                    android:checked="true"
+                    android:text="@string/expense" />
+
+                <RadioButton
+                    android:id="@+id/radioIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/income" />
+
+            </RadioGroup>
+
+            <Spinner
+                android:id="@+id/type_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/save" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

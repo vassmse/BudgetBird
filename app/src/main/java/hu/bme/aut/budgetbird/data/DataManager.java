@@ -1,24 +1,13 @@
 package hu.bme.aut.budgetbird.data;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v4.app.NotificationCompat;
-
 import com.orm.SugarApp;
 
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import hu.bme.aut.budgetbird.R;
-import hu.bme.aut.budgetbird.activities.MainActivity;
-import hu.bme.aut.budgetbird.activities.Settings;
 import hu.bme.aut.budgetbird.model.Cost;
 import hu.bme.aut.budgetbird.model.CostType;
 
@@ -52,14 +41,13 @@ public class DataManager extends SugarApp {
         return instance;
     }
 
-    public void AddCost(String name, int amount, boolean isExpense, String costType)
-    {
-        Date currentTime =  Calendar.getInstance().getTime();
-        Cost cost = new Cost(name, amount, currentTime, isExpense,costType );
+    public void AddCost(String name, int amount, boolean isExpense, String costType) {
+        Date currentTime = Calendar.getInstance().getTime();
+        Cost cost = new Cost(name, amount, currentTime, isExpense, costType);
         cost.save();
         costs.add(cost);
-        if(isExpense)
-            totalCost+=amount;
+        if (isExpense)
+            totalCost += amount;
     }
 
     public List<Cost> GetCostsSum() {
@@ -67,25 +55,23 @@ public class DataManager extends SugarApp {
     }
 
     public List<Cost> GetCostsSum(int year, int month) {
-       List<Cost> historyCost = new ArrayList<>();
-       Date selectedDate = new GregorianCalendar(year,month+1, 0).getTime();
+        List<Cost> historyCost = new ArrayList<>();
+        Date selectedDate = new GregorianCalendar(year, month + 1, 0).getTime();
 
-       for(int i=0;i<costs.size();i++)
-       {
-           Calendar cal1 = Calendar.getInstance();
-           cal1.setTime(costs.get(i).getDate());
+        for (int i = 0; i < costs.size(); i++) {
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(costs.get(i).getDate());
 
-           Calendar cal2 = Calendar.getInstance();
-           cal2.setTime(selectedDate);
+            Calendar cal2 = Calendar.getInstance();
+            cal2.setTime(selectedDate);
 
-           if(cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH))
-               historyCost.add(costs.get(i));
-       }
+            if (cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH))
+                historyCost.add(costs.get(i));
+        }
 
-       return historyCost;
+        return historyCost;
     }
 
-    //TODO: every costtype
     public int GetCostsSum(String type) {
 
         int amount = 0;
@@ -98,71 +84,60 @@ public class DataManager extends SugarApp {
         return amount;
     }
 
-    public List<String> GetIncomeTypes()
-    {
+    public List<String> GetIncomeTypes() {
         List<String> incomeTypes = new ArrayList<>();
 
-        for(int i=0;i<types.size();i++)
-        {
-            if(!types.get(i).isExpense())
+        for (int i = 0; i < types.size(); i++) {
+            if (!types.get(i).isExpense())
                 incomeTypes.add(types.get(i).getType());
         }
-        return  incomeTypes;
+        return incomeTypes;
     }
 
-    public List<String> GetExpenseTypes()
-    {
+    public List<String> GetExpenseTypes() {
         List<String> expenseTypes = new ArrayList<>();
 
-        for(int i=0;i<types.size();i++)
-        {
-            if(types.get(i).isExpense())
+        for (int i = 0; i < types.size(); i++) {
+            if (types.get(i).isExpense())
                 expenseTypes.add(types.get(i).getType());
         }
         return expenseTypes;
     }
 
-    public int IsCostLimitEnded()
-    {
-        if(isCostLimitActive && (costLimit<totalCost))
-        {
-            return totalCost-costLimit;
+    public int IsCostLimitEnded() {
+        if (isCostLimitActive && (costLimit < totalCost)) {
+            return totalCost - costLimit;
         }
 
         return 0;
     }
 
-    public void setCostLimit(int limit)
-    {
+    public void setCostLimit(int limit) {
         costLimit = limit;
     }
 
-    public void setCostLimitActive(boolean isActive)
-    {
+    public void setCostLimitActive(boolean isActive) {
         isCostLimitActive = isActive;
     }
 
-    public void RemoveItem(int i)
-    {
+    public void RemoveItem(int i) {
         Cost removable = costs.get(i);
         removable.delete();
         costs.remove(i);
     }
 
-    private int getTotalExpenses()
-    {
+    private int getTotalExpenses() {
         int amount = 0;
 
         for (int i = 0; i < costs.size(); i++) {
-            if(costs.get(i).isExpense())
+            if (costs.get(i).isExpense())
                 amount += costs.get(i).getAmount();
         }
 
         return amount;
     }
 
-    private ArrayList<CostType> getTypes()
-    {
+    private ArrayList<CostType> getTypes() {
         ArrayList<CostType> costTypes = new ArrayList<>();
 
         costTypes.add(new CostType("Étel", true));

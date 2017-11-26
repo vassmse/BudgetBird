@@ -1,10 +1,9 @@
 package hu.bme.aut.budgetbird.activities;
 
 import android.content.Context;
-import android.content.res.Resources;
+import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +11,6 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.Calendar;
 
 import hu.bme.aut.budgetbird.R;
 import hu.bme.aut.budgetbird.data.DataManager;
@@ -50,9 +47,7 @@ public class History extends AppCompatActivity {
                 year = datePicker.getYear();
                 month = datePicker.getMonth();
 
-                //TODO: add just the new item
-                for(int i = 0; i<businessLayer.GetCostsSum(year, month).size(); i++)
-                {
+                for (int i = 0; i < businessLayer.GetCostsSum(year, month).size(); i++) {
                     View rowItem = inflater.inflate(R.layout.history_row, null);
                     ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
                     TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);

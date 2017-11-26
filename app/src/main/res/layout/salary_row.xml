@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:padding="4dp">
 
@@ -16,8 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:orientation="vertical">
 
         <TextView
@@ -35,8 +34,8 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_marginLeft="8dip"
+        android:layout_weight="1"
         android:orientation="vertical">
 
 
@@ -44,13 +43,11 @@
 
     <ImageButton
         android:id="@+id/cost_remove"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center_vertical"
-        android:src="@drawable/delete"
         android:scaleType="fitXY"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        />
-
+        android:src="@drawable/delete" />
 
 </LinearLayout>

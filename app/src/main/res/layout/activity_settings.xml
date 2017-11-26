@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="hu.bme.aut.budgetbird.activities.Settings"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="hu.bme.aut.budgetbird.activities.Settings">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text="@string/notification_label"/>
+        android:text="@string/notification_label" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/notification_switch_label"/>
+            android:text="@string/notification_switch_label" />
 
         <View
             android:layout_width="0dp"
@@ -50,16 +49,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/notification_value_label"/>
+            android:text="@string/notification_value_label" />
 
         <View
             android:layout_width="0dp"
@@ -71,8 +70,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:width="100dp"
-            android:maxLength="9"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLength="9" />
 
     </LinearLayout>
 

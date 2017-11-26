@@ -11,19 +11,16 @@ public class CostType extends SugarRecord {
     private String type;
     private boolean isExpense;
 
-    public CostType(String type, boolean isExpense)
-    {
+    public CostType(String type, boolean isExpense) {
         this.type = type;
         this.isExpense = isExpense;
     }
 
-    public String getType()
-    {
+    public String getType() {
         return type;
     }
 
-    public boolean isExpense()
-    {
+    public boolean isExpense() {
         return isExpense;
     }
 }

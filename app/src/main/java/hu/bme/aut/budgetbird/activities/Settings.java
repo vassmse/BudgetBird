@@ -2,10 +2,8 @@ package hu.bme.aut.budgetbird.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,7 +39,7 @@ public class Settings extends AppCompatActivity {
         textValue.setText(notificationValue);
         switchValue.setChecked(isActive);
 
-        saveButton.setOnClickListener(new View.OnClickListener(){
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences sharedPref = getSharedPreferences("SharedPreference", Context.MODE_PRIVATE);

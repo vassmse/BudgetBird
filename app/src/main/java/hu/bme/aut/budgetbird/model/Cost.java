@@ -15,8 +15,7 @@ public class Cost extends SugarRecord {
     private boolean isExpense;
     private String costType;
 
-    public Cost(String name, int amount, Date date, boolean isExpense, String costType)
-    {
+    public Cost(String name, int amount, Date date, boolean isExpense, String costType) {
         this.name = name;
         this.amount = amount;
         this.date = date;
@@ -24,29 +23,26 @@ public class Cost extends SugarRecord {
         this.costType = costType;
     }
 
-    public Cost(){}
+    public Cost() {
+    }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getAmount()
-    {
+    public int getAmount() {
         return amount;
     }
 
-    public Date getDate()
-    {
+    public Date getDate() {
         return date;
     }
 
-    public boolean isExpense()
-    {
+    public boolean isExpense() {
         return isExpense;
     }
 
-    public String getCostType()
-    {
+    public String getCostType() {
         return costType;
     }
 

@@ -1,23 +1,17 @@
 package hu.bme.aut.budgetbird.activities;
 
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.DrawableRes;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewManager;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -54,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         businessLayer = DataManager.getInstance();
 
 
-        Date currentTime =  Calendar.getInstance().getTime();
+        Date currentTime = Calendar.getInstance().getTime();
         Calendar cal = Calendar.getInstance();
         cal.setTime(currentTime);
 
@@ -85,14 +79,11 @@ public class MainActivity extends AppCompatActivity {
 
         listOfRows.removeAllViews();
 
-        Date currentTime =  Calendar.getInstance().getTime();
+        Date currentTime = Calendar.getInstance().getTime();
         Calendar cal = Calendar.getInstance();
         cal.setTime(currentTime);
 
-        //TODO: add just the new item
-        for(int i = 0; i<businessLayer.GetCostsSum(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)).size(); i++)
-        {
-
+        for (int i = 0; i < businessLayer.GetCostsSum(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)).size(); i++) {
             final View rowItem = inflater.inflate(R.layout.salary_row, null);
             ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
             TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
@@ -120,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -136,13 +126,11 @@ public class MainActivity extends AppCompatActivity {
             Intent settingsIntent = new Intent(MainActivity.this, Settings.class);
             startActivity(settingsIntent);
             return true;
-        }
-        else if (id == R.id.action_history) {
+        } else if (id == R.id.action_history) {
             Intent historyIntent = new Intent(MainActivity.this, History.class);
             startActivity(historyIntent);
             return true;
-        }
-        else if (id == R.id.action_statistics) {
+        } else if (id == R.id.action_statistics) {
             Intent statisticsIntent = new Intent(MainActivity.this, Statistics.class);
             startActivity(statisticsIntent);
             return true;
@@ -151,26 +139,38 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private String getMonthName(int num)
-    {
-        switch (num){
-            case 0: return "JANUÁR";
-            case 1: return "FEBRUÁR";
-            case 2: return "MÁRCIUS";
-            case 3: return "ÁPRILIS";
-            case 4: return "MÁJUS";
-            case 5: return "JÚNIUS";
-            case 6: return "JÚLIUS";
-            case 7: return "AUGUSZTUS";
-            case 8: return "SZEPTEMBER";
-            case 9: return "OKTÓBER";
-            case 10: return "NOVEMBER";
-            case 11: return "DECEMBER";
+    private String getMonthName(int num) {
+        switch (num) {
+            case 0:
+                return "JANUÁR";
+            case 1:
+                return "FEBRUÁR";
+            case 2:
+                return "MÁRCIUS";
+            case 3:
+                return "ÁPRILIS";
+            case 4:
+                return "MÁJUS";
+            case 5:
+                return "JÚNIUS";
+            case 6:
+                return "JÚLIUS";
+            case 7:
+                return "AUGUSZTUS";
+            case 8:
+                return "SZEPTEMBER";
+            case 9:
+                return "OKTÓBER";
+            case 10:
+                return "NOVEMBER";
+            case 11:
+                return "DECEMBER";
         }
         return "";
     }
 
-    private @DrawableRes int getImageResource(String costType) {
+    private @DrawableRes
+    int getImageResource(String costType) {
         @DrawableRes int ret;
         switch (costType) {
             case "Étel":
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
             case "Ösztöndíj":
                 ret = R.drawable.type_university;
                 break;
-                case "Ajándék":
+            case "Ajándék":
                 ret = R.drawable.type_gift;
                 break;
             case "Szerencsejáték":
