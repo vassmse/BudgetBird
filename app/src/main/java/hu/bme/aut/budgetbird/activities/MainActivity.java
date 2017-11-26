@@ -21,6 +21,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import hu.bme.aut.budgetbird.R;
 import hu.bme.aut.budgetbird.data.DataManager;
 
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         businessLayer.setCostLimit(Integer.parseInt(notificationValue));
         businessLayer.setCostLimitActive(isActive);
 
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,17 +78,21 @@ public class MainActivity extends AppCompatActivity {
 
         listOfRows.removeAllViews();
 
+        Date currentTime =  Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(currentTime);
+
         //TODO: add just the new item
-        for(int i = 0; i<businessLayer.GetCostsSum().size(); i++)
+        for(int i = 0; i<businessLayer.GetCostsSum(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)).size(); i++)
         {
             View rowItem = inflater.inflate(R.layout.salary_row, null);
             ImageView icon = (ImageView) rowItem.findViewById(R.id.salary_direction_icon);
             TextView rowItemSalaryName = (TextView) rowItem.findViewById(R.id.row_salary_name);
             TextView rowItemSalaryAmount = (TextView) rowItem.findViewById(R.id.row_salary_amount);
 
-            icon.setImageResource(getImageResource(businessLayer.GetCostsSum().get(i).getCostType()));
-            rowItemSalaryName.setText(businessLayer.GetCostsSum().get(i).getName());
-            rowItemSalaryAmount.setText(String.valueOf(businessLayer.GetCostsSum().get(i).getAmount())+" Ft");
+            icon.setImageResource(getImageResource(businessLayer.GetCostsSum(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)).get(i).getCostType()));
+            rowItemSalaryName.setText(businessLayer.GetCostsSum(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)).get(i).getName());
+            rowItemSalaryAmount.setText(String.format("%s Ft", String.valueOf(businessLayer.GetCostsSum().get(i).getAmount())));
 
             listOfRows.addView(rowItem);
         }
