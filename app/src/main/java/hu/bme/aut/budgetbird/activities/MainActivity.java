@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout listOfRows;
     private LayoutInflater inflater;
+    private TextView mainMonth;
 
     private DataManager businessLayer;
 
@@ -50,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
         businessLayer = DataManager.getInstance();
 
+
+        Date currentTime =  Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(currentTime);
+
+        mainMonth = (TextView) findViewById(R.id.main_month);
+        mainMonth.setText(getMonthName(cal.get(Calendar.MONTH)));
+
         SharedPreferences sharedPref = getSharedPreferences("SharedPreference", Context.MODE_PRIVATE);
         boolean isActive = sharedPref.getBoolean(getString(R.string.saved_isNotification_active), true);
         String notificationValue = sharedPref.getString(getString(R.string.saved_isNotification_value), "0");
@@ -66,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(addCostIntent);
             }
         });
-
-
     }
 
     protected void onStart() {
@@ -130,6 +137,25 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private String getMonthName(int num)
+    {
+        switch (num){
+            case 0: return "JANUÁR";
+            case 1: return "FEBRUÁR";
+            case 2: return "MÁRCIUS";
+            case 3: return "ÁPRILIS";
+            case 4: return "MÁJUS";
+            case 5: return "JÚNIUS";
+            case 6: return "JÚLIUS";
+            case 7: return "AUGUSZTUS";
+            case 8: return "SZEPTEMBER";
+            case 9: return "OKTÓBER";
+            case 10: return "NOVEMBER";
+            case 11: return "DECEMBER";
+        }
+        return "";
     }
 
     private @DrawableRes int getImageResource(String costType) {
