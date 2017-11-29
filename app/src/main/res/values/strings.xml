@@ -37,4 +37,6 @@
     <string name="notification_title">Átlépted a limited</string>
     <string name="notification_text">Átlépted a havi költség limited %1$d forinttal!</string>
     <string name="show">Mutasd</string>
+    <string name="reallydelete">Tényleg törölni akarod?</string>
+    <string name="remove">Törlés</string>
 </resources>

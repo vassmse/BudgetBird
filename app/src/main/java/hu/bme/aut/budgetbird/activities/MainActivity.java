@@ -1,11 +1,13 @@
 package hu.bme.aut.budgetbird.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -101,8 +104,18 @@ public class MainActivity extends AppCompatActivity {
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    businessLayer.RemoveItem(removableIdx);
-                    listOfRows.removeViewAt(removableIdx);
+
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle(getResources().getString(R.string.remove))
+                            .setMessage(getResources().getString(R.string.reallydelete))
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    businessLayer.RemoveItem(removableIdx);
+                                    listOfRows.removeViewAt(removableIdx);
+                                }})
+                            .setNegativeButton(android.R.string.no, null).show();
                 }
             });
         }

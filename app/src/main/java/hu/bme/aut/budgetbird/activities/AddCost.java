@@ -22,7 +22,6 @@ public class AddCost extends AppCompatActivity {
 
     private EditText nameEditText;
     private EditText amountEditText;
-    private ToggleButton typeChooserButton;
     private Button saveButton;
     private Spinner typeSpinner;
     private DataManager businessLayer;
@@ -62,7 +61,7 @@ public class AddCost extends AppCompatActivity {
                     return;
                 }
 
-                businessLayer.AddCost(nameEditText.getText().toString(), Integer.parseInt(amountEditText.getText().toString()), typeChooserButton.isChecked(), typeSpinner.getSelectedItem().toString());
+                businessLayer.AddCost(nameEditText.getText().toString(), Integer.parseInt(amountEditText.getText().toString()), radioExpense.isChecked(), typeSpinner.getSelectedItem().toString());
 
                 if (businessLayer.IsCostLimitEnded() > 0)
                     sendNotification(businessLayer.IsCostLimitEnded());
